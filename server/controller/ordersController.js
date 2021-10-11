@@ -1,20 +1,18 @@
+const { Order, OrderItem, User } = require('../db/models');
+
 const getAllOrders = async (req, res) => {
-  res.status(200).send({
-    messsage: "Usando o GET dentro da rota de pedidos",
-  });
+  const orders = await Order.findAll();
+  res.status(200).send(orders);
 };
 
-const getOrdersId = (req, res) => {
+const getOrdersId = async (req, res) => {
   const id = req.params.orderId;
-  res.status(200).send({
-    mesage: "Usando o GET de um pedidos exclusivo",
-    id: id,
-  });
+  const order = await Order.findByPk(id, { include: [User, OrderItem] });
+  res.status(200).send(order);
 };
 
 const postOrders = (req, res) => {
   //validar body
-
   res.status(201).send({
     messsage: "Usando o POST dentro da rota de pedidos",
   });
