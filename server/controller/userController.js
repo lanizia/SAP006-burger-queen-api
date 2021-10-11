@@ -1,15 +1,14 @@
+const { User } = require('../db/models');
+
 const getAllUsers = async (req, res) => {
-  res.status(200).send({
-    messsage: "Usando o GET dentro da rota de usuários",
-  });
+  const users = await User.findAll();
+  res.status(200).send(users);
 };
 
-const getUserId = (req, res) => {
+const getUserId = async (req, res) => {
   const id = req.params.uid;
-  res.status(200).send({
-    mesage: "Usando o GET de um usuário exclusivo",
-    id: id,
-  });
+  const user = await User.findByPk(id)
+  res.status(200).send(user);
 };
 
 const postUser = (req, res) => {
