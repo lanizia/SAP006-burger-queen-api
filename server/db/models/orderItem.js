@@ -4,17 +4,14 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class OrderItem extends Model {
     static associate(models) {
-      // define association here
+      OrderItem.belongsTo(models.Order, { foreignKey: "order_id" });
+      OrderItem.hasOne(models.Product, { foreignKey: "product_id" });
     }
   }
 
   OrderItem.init(
     {
-      name: DataTypes.STRING,
-      flavor: DataTypes.STRING,
-      complement: DataTypes.STRING,
       qtd: DataTypes.INTEGER,
-      price: DataTypes.DECIMAL,
     },
     {
       sequelize,

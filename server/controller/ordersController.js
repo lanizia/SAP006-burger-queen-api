@@ -1,4 +1,4 @@
-const { Order, OrderItem, User } = require('../db/models');
+const { Order, OrderItem, User } = require("../db/models");
 
 const getAllOrders = async (req, res) => {
   const orders = await Order.findAll();
@@ -12,27 +12,81 @@ const getOrdersId = async (req, res) => {
 };
 
 const postOrders = (req, res) => {
-  //validar body
-  res.status(201).send({
-    messsage: "Usando o POST dentro da rota de pedidos",
+  const { client_name, table, products } = req.body;
+
+  // cria o pedido
+  const orderId = Order.create({ client_name, table, status: "pending" });
+
+  // monta itens
+  const items = products.map((product) => ({
+    order_id: orderId,
+    product_id: product.id,
+    qtd: product.qtd,
+  }));
+
+  // insere todos itens
+  await OrderItem.bulkCreate(items);
+
+  // busca pedido criado
+  const newOrder = Order.findByPk(orderId, {
+    include: [
+      {
+        model: OrderItem,
+        as: "Products",
+      },
+    ],
   });
+
+  res.status(201).send(newOrder);
 };
 
 const putOrders = (req, res) => {
   const id = req.params.orderId;
-  //validar body
-  res.status(201).send({
-    messsage: "Usando o PUT dentro da rota de pedidos",
-    id: id,
+  
+  const { status} = req.body;
+
+  const order = await User.findOne(id);
+
+  if (!order) {
+    return res.status(400).send({
+      message: "Missing required or new data",
+    });
+  }
+  if (!order) {
+    return res.status(403).send({
+      message: "Order not found",
+    });
+  }
+
+  await Product.update(
+    { status },
+    {
+      where: {
+        id,
+      },
+    }
+  );
+
+  return res.status(200).send({
+    ...order,
+    status
   });
 };
 
+
 const deleteOrders = (req, res) => {
   const id = req.params.orderId;
-  //validar body
-  res.status(201).send({
-    messsage: "Usando o DELETE dentro da rota de pedidos",
-  });
+  
+  const order = await Order.findByPk(id);
+
+  if (!order) {
+    return res.status(404).send({
+      message: "Order not found",
+    });
+  }
+  
+  const removeOrder = await Order.destroy(order);
+  return res.status(200).res.send(removeOrder);
 };
 
 module.exports = {
