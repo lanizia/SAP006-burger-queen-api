@@ -11,7 +11,7 @@ const getOrdersId = async (req, res) => {
   res.status(200).send(order);
 };
 
-const postOrders = (req, res) => {
+const postOrders = async (req, res) => {
   const { client_name, table, products } = req.body;
 
   // cria o pedido
@@ -40,12 +40,12 @@ const postOrders = (req, res) => {
   res.status(201).send(newOrder);
 };
 
-const putOrders = (req, res) => {
+const putOrders = async (req, res) => {
   const id = req.params.orderId;
   
   const { status} = req.body;
 
-  const order = await User.findOne(id);
+  const order = await Order.findOne(id);
 
   if (!order) {
     return res.status(400).send({
@@ -74,7 +74,7 @@ const putOrders = (req, res) => {
 };
 
 
-const deleteOrders = (req, res) => {
+const deleteOrders = async  (req, res) => {
   const id = req.params.orderId;
   
   const order = await Order.findByPk(id);

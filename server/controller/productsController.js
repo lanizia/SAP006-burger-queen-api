@@ -13,26 +13,12 @@ const getProductsId = async (req, res) => {
   res.status(200).send(product);
 };
 
-const postProducts = (req, res) => {
-  const { name, flavor, complement, price, image, type, subtype } = req.body;
+const postProducts = async (req, res) => {
+  const { name, flavor, complement, price, image, type, sub_type } = req.body;
 
   if (!name || !price || !type) {
     return res.status(400).send({
       message: "Missing required data",
-    });
-  }
-
-  let productExists = await Product.findOne({
-    where: {
-      name,
-      price,
-      type,
-    },
-  });
-
-  if (productExists) {
-    return res.status(403).send({
-      message: "Product already registered",
     });
   }
 
@@ -43,18 +29,18 @@ const postProducts = (req, res) => {
     price,
     image,
     type,
-    subtype,
+    sub_type,
+    createdAt: new Date(),
+    updatedAt: new Date(),
   });
 
-  return res.status(200).res.send(newProduct);
+  return res.status(200).send(newProduct);
 };
 
-const putProducts = (req, res) => {
+const putProducts = async (req, res) => {
   const id = req.params.productsId;
-
   const { price, type } = req.body;
-
-  const product = await User.findOne(id);
+  const product = await Product.findByPk(id);
 
   if (!product) {
     return res.status(400).send({
@@ -63,7 +49,7 @@ const putProducts = (req, res) => {
   }
 
   await Product.update(
-    { price, type },
+    { price, type, updatedAt: new Date() },
     {
       where: {
         id,
@@ -74,13 +60,13 @@ const putProducts = (req, res) => {
   return res.status(200).send({
     ...product,
     price,
-    type
+    type,
   });
 };
 
-const deleteProducts = (req, res) => {
+const deleteProducts = async (req, res) => {
   const id = req.params.productsId;
-  const product = await Product.findPk(id);
+  const product = await Product.findByPk(id);
 
   if (!product) {
     return res.status(403).send({
@@ -88,8 +74,9 @@ const deleteProducts = (req, res) => {
     });
   }
 
-  const removeProduct = await Product.destroy(product);
-  return res.status(200).res.send(removeProduct);
+  const removeProduct = await Product.destroy({ where: { id } });
+
+  return res.status(200).send({ message: "Product deleted", removeProduct });
 };
 
 module.exports = {
