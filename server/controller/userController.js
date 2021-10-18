@@ -61,9 +61,11 @@ const postUser = async (req, res) => {
     password,
     role,
     restaurant,
+    createdAt: new Date(),
+    updatedAt: new Date()
   });
 
-  return res.status(200).res.send(newUser);
+  return res.status(200).send(newUser);
 };
 
 const putUser = async (req, res) => {
@@ -85,7 +87,7 @@ const putUser = async (req, res) => {
   }
 
   await User.update(
-    { name, role },
+    { name, role, updatedAt: new Date() },
     {
       where: {
         id,
@@ -110,8 +112,9 @@ const deleteUser = async (req, res) => {
     });
   }
 
-  const removeUser = await User.destroy(user);
-  return res.status(200).res.send(removeUser);
+  const removeUser = await User.destroy({ where: { id } });
+
+  return res.status(200).send({ message: "User deleted", removeUser });
 };
 
 module.exports = { getAllUsers, postUser, getUserId, putUser, deleteUser };
