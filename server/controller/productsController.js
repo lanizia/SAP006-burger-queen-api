@@ -39,7 +39,7 @@ const postProducts = async (req, res) => {
 
 const putProducts = async (req, res) => {
   const id = req.params.productsId;
-  const { price, type } = req.body;
+  const { name, price, type } = req.body;
   const product = await Product.findByPk(id);
 
   if (!product) {
@@ -49,7 +49,7 @@ const putProducts = async (req, res) => {
   }
 
   await Product.update(
-    { price, type, updatedAt: new Date() },
+    { name, price, type, updatedAt: new Date() },
     {
       where: {
         id,
@@ -59,6 +59,7 @@ const putProducts = async (req, res) => {
 
   return res.status(200).send({
     ...product,
+    name,
     price,
     type,
   });
