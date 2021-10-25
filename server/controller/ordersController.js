@@ -1,24 +1,18 @@
-const { Sequelize, Order, OrderItem, Product } = require("../db/models");
+const { Order, OrderItem, Product } = require("../db/models");
 
 const getOrderWithProducts = (id) =>
   Order.findByPk(id, {
     include: [
       {
-        model: OrderItem,
+        model: Product,
         as: "Products",
-        include: [
-          {
-            model: Product,
-            attributes: [],
-          },
-        ],
-        attributes: [
-          [Sequelize.literal('"Products->Product"."id"'), "id"],
-          [Sequelize.literal('"Products->Product"."name"'), "name"],
-          [Sequelize.literal('"Products->Product"."flavor"'), "flavor"],
-          [Sequelize.literal('"Products->Product"."complement"'), "complement"],
-          "qtd",
-        ],
+        required: false,
+        attributes: ["id", "name", "flavor", "complement"],
+        through: {
+          model: OrderItem,
+          as: "OrderItem",
+          attributes: ["qtd"],
+        },
       },
     ],
   });
@@ -45,7 +39,7 @@ const postOrders = async (req, res) => {
     processedAt: new Date(),
     createdAt: new Date(),
     updatedAt: new Date(),
-    user_id: 3,
+    user_id: 1,
   });
 
   // monta itens
