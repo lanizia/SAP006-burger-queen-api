@@ -1,16 +1,22 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "lab123",
-    "database": "bqapi",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "username": "uatzkmmyapzuyv",
+    "password": "ecff83584097d273403e21efa58f8e54e9aa685be49fb22307b155c34f1c5d8b",
+    "database": "db42de5dbe5kdp",
+    "host": "ec2-3-220-90-40.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "test": {
-    "username": "postgres",
-    "password": "lab123",
-    "database": "database_development",
-    "host": "127.0.0.1",
+    "username": "uatzkmmyapzuyv",
+    "password": "ecff83584097d273403e21efa58f8e54e9aa685be49fb22307b155c34f1c5d8b",
+    "database": "db42de5dbe5kdp",
+    "host": "ec2-3-220-90-40.compute-1.amazonaws.com",
     "dialect": "postgres",
     "dialectOptions": {
       "ssl": {
@@ -20,10 +26,10 @@
     }
   },
   "production": {
-    "username": "postgres",
-    "password": "lab123",
-    "database": "database_development",
-    "host": "127.0.0.1",
+    "username": "uatzkmmyapzuyv",
+    "password": "ecff83584097d273403e21efa58f8e54e9aa685be49fb22307b155c34f1c5d8b",
+    "database": "db42de5dbe5kdp",
+    "host": "ec2-3-220-90-40.compute-1.amazonaws.com",
     "dialect": "postgres",
     "dialectOptions": {
       "ssl": {
