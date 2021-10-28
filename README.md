@@ -93,4 +93,4 @@ entregue pelo nosso cliente, a API deve expor os seguintes endpoints:
 
 ### Lanizia Souza :woman_artist:
 
-[@lanizia](https://github.com/lanizia) [Linkedin](https://www.linkedin.com/in/monique-doretto/)
+[@lanizia](https://github.com/lanizia) [Linkedin](https://www.linkedin.com/in/laniziasouza/)
