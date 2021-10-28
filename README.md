@@ -57,7 +57,6 @@ PostgreSQL como base de dados, etc).
 * [ ] Express
 * [ ] Sequelize
 * [ ] PostgreSQL
-* [ ] PostgreSQL
 * [ ] Postman
 * [ ] Heroku
 
