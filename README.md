@@ -89,17 +89,6 @@ entregue pelo nosso cliente, a API deve expor os seguintes endpoints:
 * [ ] `PUT /orders/:orderid`
 * [ ] `DELETE /orders/:orderid`
 
-### 4.4 Hacker Edition
-
-* [ ] Criptografar senha do usuário
-* [ ] `POST /auth`
-* [ ] Middleware de autenticação
-* [ ] Middleware de erros
-* [ ] Documentação da API
-* [ ] Testes unitários
-* [ ] Testes _e2e_
-* [ ] Docker
-
 ## 5. Autora :woman_technologist:
 
 ### Lanizia Souza :woman_artist:
