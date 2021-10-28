@@ -53,13 +53,13 @@ PostgreSQL como base de dados, etc).
 
 ## 3. Ferramentas
 
-* [] Node.js
-* [] Express
-* [] Sequelize
-* [] PostgreSQL
-* [] PostgreSQL
-* [] Postman
-* [] Heroku
+* [ ] Node.js
+* [ ] Express
+* [ ] Sequelize
+* [ ] PostgreSQL
+* [ ] PostgreSQL
+* [ ] Postman
+* [ ] Heroku
 
 
 
