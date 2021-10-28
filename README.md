@@ -6,9 +6,9 @@
 * [2. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
 * [3. Ferramentas utilizadas](#4-ferramentas-utilizadas)
 * [4. Endpoints](#5-endpoints)
-* [5. Desenvolvedora](#6-desenvolvedora)
+* [5. Autora](#6-desenvolvedora)
 
-## 1. Resumo do projeto
+## 1. Resumo do projeto :computer:
 
 ![Node.js logo](https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg)
 
@@ -18,7 +18,7 @@ necessita de um sistema para realizar pedidos usando um _tablet_, que os enviem 
 cozinha para que sejam preparados de forma ordenada e eficiente.
 A interface front-end da aplicação Burger Queen já foi criada e pode ser acessada [AQUI](https://niqsburger.netlify.app)
 
-## 2. Objetivos de aprendizagem
+## 2. Objetivos de aprendizagem :receipt:
 
 Como API, nesse caso nos referimos a um _servidor web_, que é basicamente
 um programa que _ouve_ o que acontece na aplicação através de uma porta de rede,
@@ -60,15 +60,12 @@ PostgreSQL como base de dados, etc).
 * [ ] Postman
 * [ ] Heroku
 
-
-
-
-## 8 Endpoints
+## 4 Endpoints
 
 Conforme estabelecido pela [documentação](https://lab-api-bq.herokuapp.com/api-docs/)
 entregue pelo nosso cliente, a API deve expor os seguintes endpoints:
 
-### 8.1 `/users`
+### 4.1 `/users`
 
 * [ ] `GET /users`
 * [ ] `GET /users/:uid`
@@ -76,7 +73,7 @@ entregue pelo nosso cliente, a API deve expor os seguintes endpoints:
 * [ ] `PUT /users/:uid`
 * [ ] `DELETE /users/:uid`
 
-### 8.2 `/products`
+### 4.2 `/products`
 
 * [ ] `GET /products`
 * [ ] `GET /products/:productid`
@@ -84,7 +81,7 @@ entregue pelo nosso cliente, a API deve expor os seguintes endpoints:
 * [ ] `PUT /products/:productid`
 * [ ] `DELETE /products/:productid`
 
-### 8.3 `/orders`
+### 4.3 `/orders`
 
 * [ ] `GET /orders`
 * [ ] `GET /orders/:orderid`
@@ -92,7 +89,7 @@ entregue pelo nosso cliente, a API deve expor os seguintes endpoints:
 * [ ] `PUT /orders/:orderid`
 * [ ] `DELETE /orders/:orderid`
 
-### 8.4 Hacker Edition
+### 4.4 Hacker Edition
 
 * [ ] Criptografar senha do usuário
 * [ ] `POST /auth`
@@ -102,3 +99,9 @@ entregue pelo nosso cliente, a API deve expor os seguintes endpoints:
 * [ ] Testes unitários
 * [ ] Testes _e2e_
 * [ ] Docker
+
+## 5. Autora :woman_technologist:
+
+### Lanizia Souza :woman_artist:
+
+[@lanizia](https://github.com/lanizia) [Linkedin](https://www.linkedin.com/in/monique-doretto/)
